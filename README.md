@@ -29,10 +29,10 @@ When the depth parameter $Y$ reduces to an integer less than or equal to 4, recu
 
 * $[X, 1, Z]_P = \text{TREE}(X)$
 * $[X, 2, Z]_P = \text{BB}(X)$
-* $[X, 3, Z]_P = \text{Rayo}^*_{Z+1}(X)$ 
-* $[X, 4, Z]_P = \text{Rayo}^*_{Z+2}(X)$
+* $[X, 3, Z]_P = \text{Rayo}^{*}_{Z+1}(X)$ 
+* $[X, 4, Z]_P = \text{Rayo}^{*}_{Z+2}(X)$
 
-*Note: $\text{TREE}(x)$ and $\text{BB}(x)$ represent the standard tree-sequence and Busy Beaver functions respectively. $\text{Rayo}^*_Z(x)$ represents a generalized Oracle-Rayo function outputting the largest integer definable using at most $x$ symbols in a language of set theory augmented by a formal truth-predicate oracle for all tiers strictly less than $Z$.*
+*Note: $\text{TREE}(x)$ and $\text{BB}(x)$ represent the standard tree-sequence and Busy Beaver functions respectively. $\text{Rayo}^{*}_{Z}(x)$ represents a generalized Oracle-Rayo function outputting the largest integer definable using at most $x$ symbols in a language of set theory augmented by a formal truth-predicate oracle for all tiers strictly less than $Z$.*
 
 ### Rule II: The Dynamic Reduction Rule ($Y > 4$)
 When the depth parameter $Y$ is strictly greater than 4, the notation expands recursively. The structure actively increments the axiomatic tier parameter ($Z$) at each nested layer:
@@ -51,18 +51,20 @@ To demonstrate the structural collapsing behavior of the rules without initializ
 An expression initialized at depth parameter 5 reduces directly into a nested base-operator composition:
 
 1. **Initial Expression:** $[X, 5, 1]_P$
-2. **Apply Rule II (since $5 > 4$):** $[X, 5, 1]_P = [\,[X, 4, 1]_P, \ 4, \ 2\,]_P$
-3. **Evaluate Inner Block (Rule I, $Y=4$):** The inner term $[X, 4, 1]_P$ maps to $\text{Rayo}^*_{1+2}(X) = \text{Rayo}^*_3(X)$. Let this resolved integer value be $K_1$.
+2. **Apply Rule II (since $5 > 4$):** 
+   $$[X, 5, 1]_P = [\,[X, 4, 1]_P, \ 4, \ 2\,]_P$$
+3. **Evaluate Inner Block:** The inner term $[X, 4, 1]_P$ maps to $\text{Rayo}^{*}_{1+2}(X) = \text{Rayo}^{*}_{3}(X)$. Let this resolved integer value be $K_1$.
 4. **Substitute and Final Evaluation:** The expression simplifies to $[K_1, 4, 2]_P$. Applying Rule I once more yields:
-   $$\text{Rayo}^*_{2+2}(K_1) = \text{Rayo}^*_4(\text{Rayo}^*_3(X))$$
+   $$\text{Rayo}^{*}_{2+2}(K_1) = \text{Rayo}^{*}_{4}(\text{Rayo}^{*}_{3}(X))$$
 
 ### Example B: Asymptotic Escalation on Higher Depths
 When $Y$ scales larger, the $Z$ parameter experiences compound accumulation before hitting base operations:
 
 1. **Initial Expression:** $[X, 6, 1]_P$
-2. **First Reduction:** $[X, 6, 1]_P = [\,[X, 5, 1]_P, \ 5, \ 2\,]_P$
+2. **First Reduction:** 
+   $$[X, 6, 1]_P = [\,[X, 5, 1]_P, \ 5, \ 2\,]_P$$
 3. **Deep Inner Reduction:** Expanding the inner component via the sequence demonstrated in Example A yields a static integer value. Let this value be $K_2$.
 4. **Outer Reduction:** The expression updates to $[K_2, 5, 2]_P$. Applying Rule II again forces the tier parameter $Z$ to increment further:
    $$[K_2, 5, 2]_P = [\,[K_2, 4, 2]_P, \ 4, \ 3\,]_P$$
 5. **Final Operator Mapping:** Resolving the inner and outer layers through Rule I reveals the true scaling nature of the system:
-   $$\text{Rayo}^*_5(\text{Rayo}^*_4(K_2))$$
+   $$\text{Rayo}^{*}_{5}(\text{Rayo}^{*}_{4}(K_2))$$
