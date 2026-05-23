@@ -68,3 +68,18 @@ When $Y$ scales larger, the $Z$ parameter experiences compound accumulation befo
    $$[K_2, 5, 2]_P = [\,[K_2, 4, 2]_P, \ 4, \ 3\,]_P$$
 5. **Final Operator Mapping:** Resolving the inner and outer layers through Rule I reveals the true scaling nature of the system:
    $$\text{Rayo}^{*}_{5}(\text{Rayo}^{*}_{4}(K_2))$$
+
+## Structural Soundness and Well-Definition
+
+To maintain its position as a valid model-theoretic framework and avoid the common pitfalls of high-tier googology (such as semantic paradoxes or ill-defined recursion), Pot Notation relies on a strict set of logical constraints:
+
+### Freedom from Berry's Paradox
+Many large number attempts collapse because they try to define a number via natural language ("the smallest number that cannot be defined in under twenty words"), which triggers Berry's Paradox. Pot Notation completely sidesteps this by being strictly **constructive and syntax-bound**. Every symbol budget $X$ maps to an explicit, deterministic string length within a formalized language of set theory ($\text{Rayo}^*_Z$). It never references the concept of "definability" in an abstract, un-quantified sense.
+
+### Tarski's Truth Deflation and Oracle Hierarchy
+According to Tarski's Undefinability Theorem, a logical language cannot contain its own truth predicate without collapsing into contradiction. Pot Notation respects this law perfectly by utilizing a stratified **oracle hierarchy** controlled by the parameter $Z$. 
+* At any given state, $[X, Y, Z]_P$ evaluates a language whose truth predicate is strictly limited to lower tiers ($< Z$).
+* The reduction rule $[X, Y, Z]_P = [\,[X, Y-1, Z]_P, \ Y-1, \ Z+1\,]_P$ safely increments the oracle tier ($Z+1$) only after the inner, lower-tier calculation has completely resolved to a static integer. Because the language's expressive power is always indexed strictly above the complexity of the numbers it is currently defining, the system remains entirely consistent.
+
+### Totality of the Reduction Chain
+Because $X$, $Y$, and $Z$ are strictly elements of the positive integers ($\mathbb{Z}^+$), the reduction rule acts as a well-founded strict descent on the parameter $Y$. For any finite initial input, $Y$ decreases by exactly 1 at each step of the outer loop. Because the base operators ($Y \le 4$) are explicitly defined and non-recursive, the reduction chain is guaranteed to terminate in a finite number of steps, proving that the function is total and maps to a unique, well-defined positive integer.
